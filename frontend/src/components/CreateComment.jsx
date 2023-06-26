@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
-const CreateComment = ({ id }) => {
+import { useState } from 'react';
+const CreateComment = ({ id, comments }) => {
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState([]);
   const inputChangeHandler = (event) => {
     setComment(event.target.value);
   };
@@ -12,16 +11,6 @@ const CreateComment = ({ id }) => {
     });
   };
 
-  const fetchCommentsHandler = async () => {
-    const response = await axios.get(
-      `http://localhost:4001/posts/${id}/comments`
-    );
-    setComments(response.data);
-  };
-
-  useEffect(() => {
-    fetchCommentsHandler();
-  }, []);
   return (
     <div>
       <div>

@@ -4,7 +4,7 @@ import CreateComment from './CreateComment';
 const PostList = () => {
   const [posts, setPosts] = useState({});
   const fetchAllPostHandler = async () => {
-    const response = await axios.get('http://localhost:4000/posts');
+    const response = await axios.get('http://localhost:4002/posts');
     setPosts(response.data);
   };
   useEffect(() => {
@@ -19,7 +19,10 @@ const PostList = () => {
             <div>
               <p>{singlePostObj.title}</p>
             </div>
-            <CreateComment id={singlePostObj.id} />
+            <CreateComment
+              id={singlePostObj.id}
+              comments={singlePostObj.comments}
+            />
           </div>
         );
       })}
