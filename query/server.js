@@ -21,11 +21,19 @@ app.post('/events', async (req, res, next) => {
     };
   }
   if (type === 'CommentCreated') {
-    const { id, comment, postId } = data;
+    const { id, comment, postId, status } = data;
     posts[postId] = {
       ...posts[postId],
-      comments: [...posts[postId].comments, { comment, id }],
+      comments: [...posts[postId].comments, { comment, id, status }],
     };
+  }
+  if (type === 'CommentUpdated') {
+    const { id, comment, postId, status } = data;
+    const postComments = posts[postId].comments;
+    const commentIndex = postComments.findIndex(
+      (singleElement) => singleElement.id === id
+    );
+    posts[postId].comments[commentIndex] = { id, status, comment };
   }
   res.status(201).send('Event receive');
 });
