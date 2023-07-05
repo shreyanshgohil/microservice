@@ -6,7 +6,7 @@ const CreateComment = ({ id, comments }) => {
     setComment(event.target.value);
   };
   const addCommentHandler = async () => {
-    await axios.post(`http://localhost:4001/posts/${id}/comments`, {
+    await axios.post(`http://posts.com/posts/${id}/comments`, {
       comment: comment,
     });
   };

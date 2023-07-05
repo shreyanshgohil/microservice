@@ -11,7 +11,7 @@ const CreatePost = () => {
   };
   //   For add the post
   const addPostHandler = async () => {
-    await axios.post('http://localhost:4000/posts', { title: postTitle });
+    await axios.post('http://posts.com/posts/create', { title: postTitle });
     setPostTitle('');
   };
   //   For form submit handler
@@ -24,7 +24,7 @@ const CreatePost = () => {
   return (
     <div>
       <form onSubmit={formSubmitHandler}>
-        <label htmlFor="post-title">Title</label>
+        <label htmlFor="post-title">Hello worlddddddddddd</label>
         <input type="text" onChange={inputChangeHandler} />
         <button onClick={addPostHandler}>Add post </button>
       </form>

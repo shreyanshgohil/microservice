@@ -4,7 +4,7 @@ import CreateComment from './CreateComment';
 const PostList = () => {
   const [posts, setPosts] = useState({});
   const fetchAllPostHandler = async () => {
-    const response = await axios.get('http://localhost:4002/posts');
+    const response = await axios.get('http://posts.com/posts');
     setPosts(response.data);
   };
   useEffect(() => {
